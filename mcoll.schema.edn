@@ -1,0 +1,79 @@
+{:release.group/title
+ {:db/type :db.type/string
+  :db/doc "The title of a particular album, e.g. 'Los Angeles'"
+  :db/cardinality :db.cardinality/one}
+
+ :release.group/front-cover
+ {:db/doc "A map with images of the cover art of the album in various sizes.
+             For example: {:small \"http://example.com/image.jpg\"}"
+  :db/cardinality :db.cardinality/one}
+
+ :release.group/first-release-date
+ {:db/type :db.type/instant
+  :db/doc "When the album was first released"
+  :db/cardinality :db.cardinality/one}
+
+ :release.group/credits
+ {:db/valueType :db.type/ref
+  :db/isComponent true
+  :db/cardinality :db.cardinality/many}
+
+ :release.group.credit/artist
+ {:db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one}
+
+ :release.group.credit/order
+ {:db/type :db.type/number
+  :db/cardinality :db.cardinality/one}
+
+ :release.group.credit/joinphrase
+ {:db/type :db.type/string
+  :db/cardinality :db.cardinality/one}
+
+ :artist/name
+ {:db/type :db.type/string
+  :db/doc "Display name of the artist"
+  :db/cardinality :db.cardinality/one}
+
+ :artist/sort-name
+ {:db/type :db.type/string
+  :db/doc "Name on which the artist can be sorted"
+  :db/cardinality :db.cardinality/one}
+
+;; musicbrainz-schema
+ :org.musicbrainz.release.group/id
+ {:db/type :db.type/uuid
+  :db/unique :db.unique/identity
+  :db/doc "The unique Musicbrainz id referring to this release group. 
+             E.g. '83b3e9f2-0080-3d98-b75f-afc09e834118' refers to Flying Lotus' Los Angeles album"
+  :db/cardinality :db.cardinality/one}
+
+ :org.musicbrainz.release.group.credit/id
+ {:db/type :db.type/string
+  :db/unique :db.unique/identity
+  :db/doc "The credit of an artist for a release group. The id is always the release group id follow by the order in which
+             the artist is credited, e.g. '83b3e9f2-0080-3d98-b75f-afc09e834118/0'"
+  :db/cardinality :db.cardinality/one}
+
+ :org.musicbrainz.artist/id
+ {:db/type :db.type/uuid
+  :db/unique :db.unique/identity
+  :db/doc "The unique Musicbrainz id for the artist.
+             E.g. 'fc7376fe-1a6f-4414-b4a7-83f50ed59c92' refers to Flying Lotus"
+  :db/cardinality :db.cardinality/one}
+
+;; user-catalog-schema
+ :com.leftfetch.mcoll.tag/name
+ {:db/type :db.type/string
+  :db/doc "A tag can have a name (but doesn't necessarily have to)"
+  :db/cardinality :db.cardinality/one}
+ 
+ :com.leftfetch.mcoll.tag/date-added
+ {:db/type :db.type/instant
+  :db/cardinality :db.cardinality/one}
+
+ :com.leftfetch.mcoll/tags
+ {:db/valueType :db.type/ref
+  :db/doc "Perhaps a cool idea if tags can also be tagged, this allows us to create tag groups and 
+             provides us with more coarse searching options."
+  :db/cardinality :db.cardinality/many}}
