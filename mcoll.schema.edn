@@ -74,6 +74,5 @@
 
  :com.leftfetch.mcoll/tags
  {:db/valueType :db.type/ref
-  :db/doc "Perhaps a cool idea if tags can also be tagged, this allows us to create tag groups and 
-             provides us with more coarse searching options."
+  :db/doc "A release group/artist/tag can have any number of tags"
   :db/cardinality :db.cardinality/many}}
