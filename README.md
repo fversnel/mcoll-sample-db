@@ -6,7 +6,7 @@ you can also access this data yourself.
 
 ## The schema
 
-The schema [com.leftfetch.mcoll.schema.edn](com.leftfetch.mcoll.schema.edn) defines the structure of the database, hwich can be used to construct
+The schema [com.leftfetch.mcoll.schema.edn](com.leftfetch.mcoll.schema.edn) defines the structure of the database, which can be used to construct
 the datascript database.
 
 ## The database transaction log
